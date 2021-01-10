@@ -60,13 +60,13 @@ class CountdownTimer {
       return this._targetDate;
   }
   set targetDate(date){
-       this._targetDate=date;
+       this._targetDate = date;
    }
 }
 
 const targetTimer = {
         selector: '#timer-1',
-        targetDate: new Date('Jan 12, 2021'),
+        targetDate: new Date('Nov 12, 2021'),
     }
 
 // const date = new Date('Jan 12, 2021');   
@@ -92,12 +92,15 @@ const refs = {
 
 const countDown = () =>{
     for (const ref in refs){
-        refs[ref].textContent = timer[ref];
+        refs[ref].textContent = pad(timer[ref]);
         // console.dir(timer[ref]);
         // console.dir(refs[ref].textContent);
     }
 }
+function pad (value){
+    return String(value).padStart(2,'0');
+}
 // set time after page load then update every 1 sec
 countDown();
-const dayLast = setInterval(countDown, 1000);
+const countInterval = setInterval(countDown, 1000);
 
